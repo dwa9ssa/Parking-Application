@@ -20,17 +20,6 @@ public class ParkingController {
 
     @GetMapping("/getParking")
     public Parking getParking(){
-        Parking parking = new Parking();
-        parking.setPricePerplacePerminute(5);
-        parking.setOpenTime("7:00");
-        parking.setClosetime("12:00");
-
-        List<String> newParkingLot = Arrays.asList("Lot 1", "Lot 2", "Lot 3");
-        String parkingLotCSV = String.join(",", newParkingLot);
-
-        parking.setParkingLot(parkingLotCSV);
-        parkingDao.save(parking);
-        return parking;
+        return parkingDao.findById(1L).orElse(null);
     }
-
 }
