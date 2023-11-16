@@ -7,19 +7,20 @@ import jakarta.persistence.Id;
 
 import java.util.List;
 
-
+@Entity
 public class Parking {
-
+    @Id
+    @GeneratedValue(strategy =  GenerationType.IDENTITY)
     private long id;
     private double pricePerplacePerminute;
     private String openTime;
     private String closetime;
-    List<String> parkingLot;
+    private String parkingLot;
 
     public Parking() {
     }
 
-    public Parking(long id, double pricePerplacePerminute, String openTime, String closetime, List<String> parkingLot) {
+    public Parking(long id, double pricePerplacePerminute, String openTime, String closetime, String parkingLot) {
         this.id = id;
         this.pricePerplacePerminute = pricePerplacePerminute;
         this.openTime = openTime;
@@ -59,11 +60,11 @@ public class Parking {
         this.closetime = closetime;
     }
 
-    public List<String> getParkingLot() {
+    public String getParkingLot() {
         return parkingLot;
     }
 
-    public void setParkingLot(List<String> parkingLot) {
+    public void setParkingLot(String parkingLot) {
         this.parkingLot = parkingLot;
     }
 
