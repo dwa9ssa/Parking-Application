@@ -25,4 +25,9 @@ public class ParkingController {
     public List<Parking> getParking(){
         return parkingService.getParking();
     }
+
+    @GetMapping("/getParkingLots")
+    public String getParkingLots(){
+        return parkingService.getParkingLots().toString();
+    }
 }

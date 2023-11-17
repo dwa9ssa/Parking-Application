@@ -19,7 +19,7 @@ public class ParkingConfiguration {
                 parking.setPricePerplacePerminute(2);
                 parking.setOpenTime("7:00");
                 parking.setClosetime("12:00");
-                List<String> newParkingLot = Arrays.asList("Lot 1", "Lot 2", "Lot 3");
+                List<String> newParkingLot = Arrays.asList("Lot 1", "Lot 2", "Lot 3", "Lot 4", "Lot 5");
                 String parkingLotCSV = String.join(",", newParkingLot);
                 parking.setParkingLot(parkingLotCSV);
                 parkingDao.save(parking);
