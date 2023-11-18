@@ -11,7 +11,6 @@ import java.util.stream.Collectors;
 @Service
 public class ParkingService {
     private ParkingDao parkingDao;
-    private Parking parking;
 
     @Autowired
     public ParkingService(ParkingDao parkingDao) {
