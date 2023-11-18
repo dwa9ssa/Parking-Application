@@ -10,12 +10,12 @@ public class ParkingLot {
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
     private long parkingLotNumber;
-    private List<String> carParkingInfo;
+    private String carParkingInfo;
 
     public ParkingLot() {
     }
 
-    public ParkingLot(long parkingLotNumber, List<String> carParkingInfo) {
+    public ParkingLot(long parkingLotNumber, String carParkingInfo) {
         this.parkingLotNumber = parkingLotNumber;
         this.carParkingInfo = carParkingInfo;
     }
@@ -28,11 +28,11 @@ public class ParkingLot {
         this.parkingLotNumber = parkingLotNumber;
     }
 
-    public List<String> getCarParkingInfo() {
+    public String getCarParkingInfo() {
         return carParkingInfo;
     }
 
-    public void setCarParkingInfo(List<String> carParkingInfo) {
+    public void setCarParkingInfo(String carParkingInfo) {
         this.carParkingInfo = carParkingInfo;
     }
 }
