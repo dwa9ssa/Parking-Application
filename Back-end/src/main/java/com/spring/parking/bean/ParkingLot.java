@@ -12,12 +12,18 @@ public class ParkingLot {
     private long parkingLotNumber;
     private String carParkingInfo;
 
+    @ManyToOne
+    @JoinColumn(name = "parking_id")
+    private Parking parking;
+
     public ParkingLot() {
+
     }
 
-    public ParkingLot(long parkingLotNumber, String carParkingInfo) {
+    public ParkingLot(long parkingLotNumber, String carParkingInfo, Parking parking) {
         this.parkingLotNumber = parkingLotNumber;
         this.carParkingInfo = carParkingInfo;
+        this.parking = parking;
     }
 
     public long getParkingLotNumber() {
@@ -34,5 +40,22 @@ public class ParkingLot {
 
     public void setCarParkingInfo(String carParkingInfo) {
         this.carParkingInfo = carParkingInfo;
+    }
+
+    public Parking getParking() {
+        return parking;
+    }
+
+    public void setParking(Parking parking) {
+        this.parking = parking;
+    }
+
+    @Override
+    public String toString() {
+        return "ParkingLot{" +
+                "parkingLotNumber=" + parkingLotNumber +
+                ", carParkingInfo='" + carParkingInfo + '\'' +
+                ", parking=" + parking +
+                '}';
     }
 }
