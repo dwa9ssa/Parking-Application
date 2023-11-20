@@ -1,6 +1,8 @@
 package com.spring.parking.controller;
 
 import com.spring.parking.bean.ParkingLot;
+import com.spring.parking.dao.ParkingDao;
+import com.spring.parking.dao.ParkingLotDao;
 import com.spring.parking.service.ParkingLotService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -28,6 +30,11 @@ public class ParkingLotsController {
     @PostMapping("/postParkingLot")
     public void addNewCarParkingInfo(@RequestBody ParkingLot parkingLot){
         parkingLotService.addNewCarParkingInfo(parkingLot);
+    }
+
+    @PutMapping("/{parkingLotNumber}")
+    public void updateCar(@PathVariable("parkingLotNumber") Long parkingLotNumber,@RequestBody ParkingLot parkingLot){
+        parkingLotService.updateCarParkingInfo(parkingLotNumber,parkingLot);
     }
 
 

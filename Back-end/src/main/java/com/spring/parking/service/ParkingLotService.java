@@ -29,5 +29,10 @@ public class ParkingLotService {
         parkingLotDao.save(parkingLot);
     }
 
+    public void updateCarParkingInfo(long parkingLotNumber, ParkingLot parkingLot){
+            parkingLot.setCarParkingInfo(parkingLot.getCarParkingInfo());
+            parkingLotDao.save(parkingLot);
+    }
+
 
 }
