@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/api/v1/parking/ParkingLot",method = {RequestMethod.POST,RequestMethod.DELETE})
+@RequestMapping("/api/v1/parking/ParkingLot")
 public class ParkingLotsController {
 
 
