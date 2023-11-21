@@ -1,9 +1,6 @@
 package com.spring.parking.bean;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.util.List;
 
@@ -11,29 +8,31 @@ import java.util.List;
 public class Parking {
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
-    private long id;
+    private long parking_id;
     private double pricePerplacePerminute;
     private String openTime;
     private String closetime;
-    private String parkingLot;
+
+    @OneToMany(mappedBy = "parking", cascade = CascadeType.ALL)
+    private List<ParkingLot> parkingLot;
 
     public Parking() {
     }
 
-    public Parking(long id, double pricePerplacePerminute, String openTime, String closetime, String parkingLot) {
-        this.id = id;
+    public Parking(long parking_id, double pricePerplacePerminute, String openTime, String closetime, List<ParkingLot> parkingLot) {
+        this.parking_id = parking_id;
         this.pricePerplacePerminute = pricePerplacePerminute;
         this.openTime = openTime;
         this.closetime = closetime;
         this.parkingLot = parkingLot;
     }
 
-    public long getId() {
-        return id;
+    public long getParking_id() {
+        return parking_id;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setParking_id(long parking_id) {
+        this.parking_id = parking_id;
     }
 
     public double getPricePerplacePerminute() {
@@ -60,18 +59,18 @@ public class Parking {
         this.closetime = closetime;
     }
 
-    public String getParkingLot() {
+    public List<ParkingLot> getParkingLot() {
         return parkingLot;
     }
 
-    public void setParkingLot(String parkingLot) {
+    public void setParkingLot(List<ParkingLot> parkingLot) {
         this.parkingLot = parkingLot;
     }
 
     @Override
     public String toString() {
         return "Parking{" +
-                "id=" + id +
+                "parking_id=" + parking_id +
                 ", pricePerplacePerminute=" + pricePerplacePerminute +
                 ", openTime='" + openTime + '\'' +
                 ", closetime='" + closetime + '\'' +
