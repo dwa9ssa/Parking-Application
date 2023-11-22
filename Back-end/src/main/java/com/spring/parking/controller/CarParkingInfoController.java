@@ -4,9 +4,7 @@ import com.spring.parking.bean.CarParkingInfo;
 import com.spring.parking.dao.CarParkingInfoDao;
 import com.spring.parking.service.CarParkingInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,4 +22,15 @@ public class CarParkingInfoController {
     public List<CarParkingInfo> getCars(){
         return carParkingInfoService.getCars();
     }
+
+    @PutMapping("/{vehicleRegistration}")
+    public void updateCarParkingInfo(@PathVariable("vehicleRegistration") String vehicleRegistration, @RequestBody CarParkingInfo carParkingInfo){
+        carParkingInfoService.updateCar(vehicleRegistration, carParkingInfo);
+    }
+
+    @PostMapping("/Car")
+    public void addNewCar(@RequestBody CarParkingInfo carParkingInfo){
+        carParkingInfoService.addCar(carParkingInfo);
+    }
+
 }
