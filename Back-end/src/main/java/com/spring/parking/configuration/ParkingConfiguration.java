@@ -27,10 +27,6 @@ public class ParkingConfiguration {
 
                 parkingDao.save(parking);
             }
-            parkingLot.setParkingLotNumber(1);
-            parkingLot.setCarParkingInfo("First Car");
-            parkingLotDao.save(parkingLot);
-
         };
     }
 
