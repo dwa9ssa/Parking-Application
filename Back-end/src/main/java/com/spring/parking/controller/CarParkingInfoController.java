@@ -33,4 +33,9 @@ public class CarParkingInfoController {
         carParkingInfoService.addCar(carParkingInfo);
     }
 
+    @DeleteMapping("/{vehicleRegistration}")
+    public void deleteCar(@PathVariable("vehicleRegistration") String vehicleRegistration){
+        carParkingInfoService.deleteCar(vehicleRegistration);
+    }
+
 }

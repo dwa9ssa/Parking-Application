@@ -5,7 +5,6 @@ import com.spring.parking.dao.CarParkingInfoDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.sql.Timestamp;
 import java.util.List;
 
 @Service
@@ -34,6 +33,10 @@ public class CarParkingInfoService {
 
     public void addCar(CarParkingInfo carParkingInfo){
         carParkingInfoDao.save(carParkingInfo);
+    }
+
+    public void deleteCar(String vehicleRegistration){
+        carParkingInfoDao.delete(carParkingInfoDao.findByVehicleRegistration(vehicleRegistration));
     }
 
 }
