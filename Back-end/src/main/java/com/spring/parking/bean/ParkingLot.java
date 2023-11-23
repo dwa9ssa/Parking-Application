@@ -2,15 +2,15 @@ package com.spring.parking.bean;
 
 import jakarta.persistence.*;
 
-import java.util.List;
-
 @Entity
 @Table(name="parking_lot")
 public class ParkingLot {
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
     private long parkingLotNumber;
-    private String carParkingInfo;
+
+    @OneToOne(mappedBy = "parkingLot")
+    private CarParkingInfo carParkingInfo;
 
     @ManyToOne
     @JoinColumn(name = "parking_id")
@@ -20,7 +20,7 @@ public class ParkingLot {
 
     }
 
-    public ParkingLot(long parkingLotNumber, String carParkingInfo, Parking parking) {
+    public ParkingLot(long parkingLotNumber, CarParkingInfo carParkingInfo, Parking parking) {
         this.parkingLotNumber = parkingLotNumber;
         this.carParkingInfo = carParkingInfo;
         this.parking = parking;
@@ -34,11 +34,11 @@ public class ParkingLot {
         this.parkingLotNumber = parkingLotNumber;
     }
 
-    public String getCarParkingInfo() {
+    public CarParkingInfo getCarParkingInfo() {
         return carParkingInfo;
     }
 
-    public void setCarParkingInfo(String carParkingInfo) {
+    public void setCarParkingInfo(CarParkingInfo carParkingInfo) {
         this.carParkingInfo = carParkingInfo;
     }
 
