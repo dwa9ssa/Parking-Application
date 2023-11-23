@@ -20,8 +20,8 @@ public class ParkingService {
         return parkingDao.findAll();
     }
 
-    public List<Parking> getParkingLots() {
-        return parkingDao.findAll();
+    public Parking parkingInit(Parking parking){
+        return parkingDao.save(parking);
     }
 
 }
