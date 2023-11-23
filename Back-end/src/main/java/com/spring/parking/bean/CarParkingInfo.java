@@ -8,7 +8,6 @@ import java.sql.Timestamp;
 @Table(name = "car_parking_info")
 public class CarParkingInfo {
     @Id
-    @GeneratedValue(strategy =  GenerationType.AUTO)
     private String vehicleRegistration;
     private String brand;
     private String model;
