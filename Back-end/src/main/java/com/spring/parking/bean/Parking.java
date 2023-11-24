@@ -7,7 +7,7 @@ import java.util.List;
 @Entity
 public class Parking {
     @Id
-    @GeneratedValue(strategy =  GenerationType.IDENTITY)
+    @GeneratedValue(strategy =  GenerationType.AUTO)
     private long parking_id;
     private double pricePerplacePerminute;
     private String openTime;

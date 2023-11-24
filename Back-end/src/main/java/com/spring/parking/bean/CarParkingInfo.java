@@ -8,23 +8,24 @@ import java.sql.Timestamp;
 @Table(name = "car_parking_info")
 public class CarParkingInfo {
     @Id
-    private String vehicleRegistration;
+    @GeneratedValue(strategy =  GenerationType.AUTO)
+    private long vehicleRegistration;
     private String brand;
     private String model;
     private String color;
     private String type;
-    private Timestamp entryTimestamp;
-    private Timestamp finishTimestamp;
+    private String entryTimestamp;
+    private String finishTimestamp;
     private double totalPrice;
 
-    @OneToOne
-    @JoinColumn(name = "parkingLotNumber")
+    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @JoinColumn(name = "parkingLotNumber", referencedColumnName = "parkingLotNumber")
     private ParkingLot parkingLot;
 
     public CarParkingInfo() {
     }
 
-    public CarParkingInfo(String vehicleRegistration, String brand, String model, String color, String type, Timestamp entryTimestamp, Timestamp finishTimestamp, double totalPrice, ParkingLot parkingLot) {
+    public CarParkingInfo(Long vehicleRegistration, String brand, String model, String color, String type, String entryTimestamp, String finishTimestamp, double totalPrice, ParkingLot parkingLot) {
         this.vehicleRegistration = vehicleRegistration;
         this.brand = brand;
         this.model = model;
@@ -36,11 +37,11 @@ public class CarParkingInfo {
         this.parkingLot = parkingLot;
     }
 
-    public String getVehicleRegistration() {
+    public Long getVehicleRegistration() {
         return vehicleRegistration;
     }
 
-    public void setVehicleRegistration(String vehicleRegistration) {
+    public void setVehicleRegistration(Long vehicleRegistration) {
         this.vehicleRegistration = vehicleRegistration;
     }
 
@@ -76,19 +77,19 @@ public class CarParkingInfo {
         this.type = type;
     }
 
-    public Timestamp getEntryTimestamp() {
+    public String getEntryTimestamp() {
         return entryTimestamp;
     }
 
-    public void setEntryTimestamp(Timestamp entryTimestamp) {
+    public void setEntryTimestamp(String entryTimestamp) {
         this.entryTimestamp = entryTimestamp;
     }
 
-    public Timestamp getFinishTimestamp() {
+    public String getFinishTimestamp() {
         return finishTimestamp;
     }
 
-    public void setFinishTimestamp(Timestamp finishTimestamp) {
+    public void setFinishTimestamp(String finishTimestamp) {
         this.finishTimestamp = finishTimestamp;
     }
 
