@@ -21,18 +21,12 @@ public class ParkingLotService {
         return parkingLotDao.findAll();
     }
 
-    public void deleteCarParkingInfo(Long parkingLotNumber){
+    public void unparkingCar(Long parkingLotNumber){
         parkingLotDao.deleteById(parkingLotNumber);
     }
 
-    public void addNewCarParkingInfo(ParkingLot parkingLot){
+    public void parkingCar(ParkingLot parkingLot){
         parkingLotDao.save(parkingLot);
     }
-
-    public void updateCarParkingInfo(long parkingLotNumber, ParkingLot parkingLot){
-            parkingLot.setCarParkingInfo(parkingLot.getCarParkingInfo());
-            parkingLotDao.save(parkingLot);
-    }
-
 
 }
