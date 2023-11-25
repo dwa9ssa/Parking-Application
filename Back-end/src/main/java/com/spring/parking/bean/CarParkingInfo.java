@@ -2,13 +2,11 @@ package com.spring.parking.bean;
 
 import jakarta.persistence.*;
 
-import java.sql.Timestamp;
-
 @Entity
 @Table(name = "car_parking_info")
 public class CarParkingInfo {
     @Id
-    @GeneratedValue(strategy =  GenerationType.AUTO)
+    @GeneratedValue(strategy =  GenerationType.IDENTITY)
     private long vehicleRegistration;
     private String brand;
     private String model;

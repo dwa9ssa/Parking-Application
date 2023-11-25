@@ -10,6 +10,7 @@ public class ParkingLot {
     private long parkingLotNumber;
 
     @OneToOne(mappedBy = "parkingLot",cascade = CascadeType.ALL)
+    @JoinColumn(name = "vehicle_registration")
     private CarParkingInfo carParkingInfo;
 
     @ManyToOne
