@@ -9,7 +9,7 @@ public class ParkingLot {
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
     private long parkingLotNumber;
 
-    @OneToOne(mappedBy = "parkingLot",cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "vehicle_registration")
     private CarParkingInfo carParkingInfo;
 

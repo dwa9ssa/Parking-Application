@@ -25,8 +25,12 @@ public class ParkingLotService {
         parkingLotDao.deleteById(parkingLotNumber);
     }
 
-    public void parkingCar(ParkingLot parkingLot){
+    public void save(ParkingLot parkingLot){
         parkingLotDao.save(parkingLot);
+    }
+
+    public ParkingLot findParkingLotById(Long parkingLotId){
+        return parkingLotDao.findById(parkingLotId).get();
     }
 
 }

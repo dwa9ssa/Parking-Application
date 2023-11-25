@@ -24,4 +24,12 @@ public class CarParkingInfoService {
         carParkingInfo.setFinishTimestamp(carParkingInfo.getFinishTimestamp());
         carParkingInfoDao.save(carParkingInfo);
     }
+
+    public void deleteCar(CarParkingInfo car){
+        carParkingInfoDao.delete(car);
+    }
+
+    public void save(CarParkingInfo carParkingInfo){
+        carParkingInfoDao.save(carParkingInfo);
+    }
 }

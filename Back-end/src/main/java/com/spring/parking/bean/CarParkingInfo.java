@@ -16,9 +16,7 @@ public class CarParkingInfo {
     private String finishTimestamp;
     private double totalPrice;
 
-    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    @JoinColumn(name = "parkingLotNumber", referencedColumnName = "parkingLotNumber")
-    private ParkingLot parkingLot;
+
 
     public CarParkingInfo() {
     }
@@ -32,7 +30,6 @@ public class CarParkingInfo {
         this.entryTimestamp = entryTimestamp;
         this.finishTimestamp = finishTimestamp;
         this.totalPrice = totalPrice;
-        this.parkingLot = parkingLot;
     }
 
     public Long getVehicleRegistration() {
@@ -99,13 +96,9 @@ public class CarParkingInfo {
         this.totalPrice = totalPrice;
     }
 
-    public ParkingLot getParkingLot() {
-        return parkingLot;
-    }
 
-    public void setParkingLot(ParkingLot parkingLot) {
-        this.parkingLot = parkingLot;
-    }
+
+
 
     @Override
     public String toString() {
@@ -118,7 +111,6 @@ public class CarParkingInfo {
                 ", entryTimestamp=" + entryTimestamp +
                 ", finishTimestamp=" + finishTimestamp +
                 ", totalPrice=" + totalPrice +
-                ", parkingLot=" + parkingLot +
                 '}';
     }
 }
