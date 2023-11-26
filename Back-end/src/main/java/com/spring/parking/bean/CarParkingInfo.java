@@ -2,6 +2,8 @@ package com.spring.parking.bean;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name = "car_parking_info")
 public class CarParkingInfo {
@@ -12,8 +14,8 @@ public class CarParkingInfo {
     private String model;
     private String color;
     private String type;
-    private String entryTimestamp;
-    private String finishTimestamp;
+    private LocalDateTime entryTime;
+    private LocalDateTime finishTime;
     private double totalPrice;
 
 
@@ -21,14 +23,14 @@ public class CarParkingInfo {
     public CarParkingInfo() {
     }
 
-    public CarParkingInfo(Long vehicleRegistration, String brand, String model, String color, String type, String entryTimestamp, String finishTimestamp, double totalPrice, ParkingLot parkingLot) {
+    public CarParkingInfo(Long vehicleRegistration, String brand, String model, String color, String type, LocalDateTime entryTime, LocalDateTime finishTime, double totalPrice) {
         this.vehicleRegistration = vehicleRegistration;
         this.brand = brand;
         this.model = model;
         this.color = color;
         this.type = type;
-        this.entryTimestamp = entryTimestamp;
-        this.finishTimestamp = finishTimestamp;
+        this.entryTime = entryTime;
+        this.finishTime = finishTime;
         this.totalPrice = totalPrice;
     }
 
@@ -72,20 +74,20 @@ public class CarParkingInfo {
         this.type = type;
     }
 
-    public String getEntryTimestamp() {
-        return entryTimestamp;
+    public LocalDateTime getEntryTime() {
+        return entryTime;
     }
 
-    public void setEntryTimestamp(String entryTimestamp) {
-        this.entryTimestamp = entryTimestamp;
+    public void setEntryTime(LocalDateTime entryTime) {
+        this.entryTime = entryTime;
     }
 
-    public String getFinishTimestamp() {
-        return finishTimestamp;
+    public LocalDateTime getFinishTime() {
+        return finishTime;
     }
 
-    public void setFinishTimestamp(String finishTimestamp) {
-        this.finishTimestamp = finishTimestamp;
+    public void setFinishTime(LocalDateTime finishTime) {
+        this.finishTime = finishTime;
     }
 
     public double getTotalPrice() {
@@ -96,21 +98,4 @@ public class CarParkingInfo {
         this.totalPrice = totalPrice;
     }
 
-
-
-
-
-    @Override
-    public String toString() {
-        return "CarParkingInfo{" +
-                "vehicleRegistration='" + vehicleRegistration + '\'' +
-                ", brand='" + brand + '\'' +
-                ", model='" + model + '\'' +
-                ", color='" + color + '\'' +
-                ", type='" + type + '\'' +
-                ", entryTimestamp=" + entryTimestamp +
-                ", finishTimestamp=" + finishTimestamp +
-                ", totalPrice=" + totalPrice +
-                '}';
-    }
 }

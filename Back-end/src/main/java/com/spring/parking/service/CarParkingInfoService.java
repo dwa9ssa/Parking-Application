@@ -20,8 +20,8 @@ public class CarParkingInfoService {
         carParkingInfo.setModel(carParkingInfo.getModel());
         carParkingInfo.setColor(carParkingInfo.getColor());
         carParkingInfo.setType(carParkingInfo.getType());
-        carParkingInfo.setEntryTimestamp(carParkingInfo.getEntryTimestamp());
-        carParkingInfo.setFinishTimestamp(carParkingInfo.getFinishTimestamp());
+        carParkingInfo.setEntryTime(carParkingInfo.getEntryTime());
+        carParkingInfo.setFinishTime(carParkingInfo.getFinishTime());
         carParkingInfoDao.save(carParkingInfo);
     }
 

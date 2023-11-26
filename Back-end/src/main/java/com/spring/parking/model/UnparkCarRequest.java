@@ -4,19 +4,21 @@ package com.spring.parking.model;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.time.LocalDateTime;
+
 public class UnparkCarRequest {
-    private String finishTimestamp;
+    private LocalDateTime finishTime;
 
     @JsonCreator
-    public UnparkCarRequest(@JsonProperty("finishTimestamp") String finishTimestamp) {
-        this.finishTimestamp = finishTimestamp;
+    public UnparkCarRequest(@JsonProperty("finishTime") LocalDateTime finishTime) {
+        this.finishTime = finishTime;
     }
 
-    public String getFinishTimestamp() {
-        return finishTimestamp;
+    public LocalDateTime getFinishTime() {
+        return finishTime;
     }
 
-    public void setFinishTimestamp(String finishTimestamp) {
-        this.finishTimestamp = finishTimestamp;
+    public void setFinishTime(LocalDateTime finishTime) {
+        this.finishTime = finishTime;
     }
 }
