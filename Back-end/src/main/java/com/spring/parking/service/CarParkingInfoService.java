@@ -21,7 +21,6 @@ public class CarParkingInfoService {
         carParkingInfo.setColor(carParkingInfo.getColor());
         carParkingInfo.setType(carParkingInfo.getType());
         carParkingInfo.setEntryTime(carParkingInfo.getEntryTime());
-        carParkingInfo.setFinishTime(carParkingInfo.getFinishTime());
         carParkingInfoDao.save(carParkingInfo);
     }
 

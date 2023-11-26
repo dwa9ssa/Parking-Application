@@ -9,7 +9,7 @@ public class Parking {
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
     private long parking_id;
-    private double pricePerplacePerminute;
+
     private String openTime;
     private String closetime;
 
@@ -19,9 +19,9 @@ public class Parking {
     public Parking() {
     }
 
-    public Parking(long parking_id, double pricePerplacePerminute, String openTime, String closetime, List<ParkingLot> parkingLot) {
+    public Parking(long parking_id, String openTime, String closetime, List<ParkingLot> parkingLot) {
         this.parking_id = parking_id;
-        this.pricePerplacePerminute = pricePerplacePerminute;
+
         this.openTime = openTime;
         this.closetime = closetime;
         this.parkingLot = parkingLot;
@@ -33,14 +33,6 @@ public class Parking {
 
     public void setParking_id(long parking_id) {
         this.parking_id = parking_id;
-    }
-
-    public double getPricePerplacePerminute() {
-        return pricePerplacePerminute;
-    }
-
-    public void setPricePerplacePerminute(double pricePerplacePerminute) {
-        this.pricePerplacePerminute = pricePerplacePerminute;
     }
 
     public String getOpenTime() {
@@ -65,16 +57,5 @@ public class Parking {
 
     public void setParkingLot(List<ParkingLot> parkingLot) {
         this.parkingLot = parkingLot;
-    }
-
-    @Override
-    public String toString() {
-        return "Parking{" +
-                "parking_id=" + parking_id +
-                ", pricePerplacePerminute=" + pricePerplacePerminute +
-                ", openTime='" + openTime + '\'' +
-                ", closetime='" + closetime + '\'' +
-                ", parkingLot=" + parkingLot +
-                '}';
     }
 }

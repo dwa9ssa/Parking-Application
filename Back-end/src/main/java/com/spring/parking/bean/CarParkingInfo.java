@@ -15,7 +15,7 @@ public class CarParkingInfo {
     private String color;
     private String type;
     private LocalDateTime entryTime;
-    private LocalDateTime finishTime;
+
     private double totalPrice;
 
 
@@ -23,14 +23,13 @@ public class CarParkingInfo {
     public CarParkingInfo() {
     }
 
-    public CarParkingInfo(Long vehicleRegistration, String brand, String model, String color, String type, LocalDateTime entryTime, LocalDateTime finishTime, double totalPrice) {
+    public CarParkingInfo(Long vehicleRegistration, String brand, String model, String color, String type, LocalDateTime entryTime, double totalPrice) {
         this.vehicleRegistration = vehicleRegistration;
         this.brand = brand;
         this.model = model;
         this.color = color;
         this.type = type;
         this.entryTime = entryTime;
-        this.finishTime = finishTime;
         this.totalPrice = totalPrice;
     }
 
@@ -80,14 +79,6 @@ public class CarParkingInfo {
 
     public void setEntryTime(LocalDateTime entryTime) {
         this.entryTime = entryTime;
-    }
-
-    public LocalDateTime getFinishTime() {
-        return finishTime;
-    }
-
-    public void setFinishTime(LocalDateTime finishTime) {
-        this.finishTime = finishTime;
     }
 
     public double getTotalPrice() {
