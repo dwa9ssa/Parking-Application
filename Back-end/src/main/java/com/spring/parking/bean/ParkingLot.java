@@ -17,14 +17,17 @@ public class ParkingLot {
     @JoinColumn(name = "parking_id")
     private Parking parking;
 
+    private double price;
+
     public ParkingLot() {
 
     }
 
-    public ParkingLot(long parkingLotNumber, CarParkingInfo carParkingInfo, Parking parking) {
+    public ParkingLot(long parkingLotNumber, CarParkingInfo carParkingInfo, Parking parking, double price) {
         this.parkingLotNumber = parkingLotNumber;
         this.carParkingInfo = carParkingInfo;
         this.parking = parking;
+        this.price = price;
     }
 
     public long getParkingLotNumber() {
@@ -58,5 +61,13 @@ public class ParkingLot {
                 ", carParkingInfo='" + carParkingInfo + '\'' +
                 ", parking=" + parking +
                 '}';
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 }

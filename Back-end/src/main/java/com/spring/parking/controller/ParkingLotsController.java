@@ -8,6 +8,7 @@ import com.spring.parking.service.ParkingLotService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -30,6 +31,11 @@ public class ParkingLotsController {
     public CarParkingInfo unparkingCar(@PathVariable("parkingLotNumber") Long parkingLotNumber, @RequestBody UnparkCarRequest unparkCarRequest){
         ParkingLot parkingLot = parkingLotService.findParkingLotById(parkingLotNumber);
         CarParkingInfo car = parkingLot.getCarParkingInfo();
+        LocalDateTime start = car.getEntryTime();
+        LocalDateTime finish = unparkCarRequest.getFinishTime();
+        long durationMinutes = java.time.Duration.between(start, finish).toMinutes();
+        double finalPrice = durationMinutes * parkingLot.getPrice();
+        car.setTotalPrice(finalPrice);
         parkingLot.setCarParkingInfo(null);
         carParkingInfoService.deleteCar(car);
         parkingLotService.save(parkingLot);
