@@ -29,24 +29,12 @@ public class ParkingLotsController {
 
     @DeleteMapping("/unparkingCar/{parkingLotNumber}")
     public CarParkingInfo unparkingCar(@PathVariable("parkingLotNumber") Long parkingLotNumber, @RequestBody UnparkCarRequest unparkCarRequest){
-        ParkingLot parkingLot = parkingLotService.findParkingLotById(parkingLotNumber);
-        CarParkingInfo car = parkingLot.getCarParkingInfo();
-        LocalDateTime start = car.getEntryTime();
-        LocalDateTime finish = unparkCarRequest.getFinishTime();
-        long durationMinutes = java.time.Duration.between(start, finish).toMinutes();
-        double finalPrice = durationMinutes * parkingLot.getPrice();
-        car.setTotalPrice(finalPrice);
-        parkingLot.setCarParkingInfo(null);
-        carParkingInfoService.deleteCar(car);
-        parkingLotService.save(parkingLot);
-        return car;
+        return parkingLotService.unparkingCar(parkingLotNumber,unparkCarRequest);
     }
 
     @PostMapping("/parkCar/{parkingLotNumber}")
     public void parkingCar(@PathVariable("parkingLotNumber") Long parkingLotNumber, @RequestBody CarParkingInfo carParkingInfo){
-        ParkingLot parkingLot = parkingLotService.findParkingLotById(parkingLotNumber);
-        parkingLot.setCarParkingInfo(carParkingInfo);
-        parkingLotService.save(parkingLot);
+        parkingLotService.parkingCar(parkingLotNumber, carParkingInfo);
     }
 
 }
