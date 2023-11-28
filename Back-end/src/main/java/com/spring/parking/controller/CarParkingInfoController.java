@@ -17,7 +17,7 @@ public class CarParkingInfoController {
     private CarParkingInfoService carParkingInfoService;
 
     @PutMapping("/updateCar/{vehicleRegistration}")
-    public void updateCarParkingInfo(@PathVariable("vehicleRegistration") Long vehicleRegistration, @RequestBody CarParkingInfo carParkingInfo){
+    public void updateCarParkingInfo(@PathVariable Long vehicleRegistration, @RequestBody CarParkingInfo carParkingInfo){
         carParkingInfoService.updateCar(vehicleRegistration, carParkingInfo);
     }
 
