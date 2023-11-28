@@ -23,8 +23,12 @@ public class ParkingLotService {
         this.carParkingInfoService = carParkingInfoService;
     }
 
-    public List<ParkingLot> getParkingLot() {
+    public List<ParkingLot> getParkingLots() {
         return parkingLotDao.findAll();
+    }
+
+    public ParkingLot getParkingLot(Long parkingLotNumber){
+        return parkingLotDao.findById(parkingLotNumber).get();
     }
 
     public CarParkingInfo unparkingCar(Long parkingLotNumber, UnparkCarRequest unparkCarRequest){

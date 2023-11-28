@@ -23,9 +23,15 @@ public class ParkingLotsController {
     private CarParkingInfoService carParkingInfoService;
 
     @GetMapping("/parkingLots")
-    public List<ParkingLot> getParkingLot(){
-        return parkingLotService.getParkingLot();
+    public List<ParkingLot> getParkingLots(){
+        return parkingLotService.getParkingLots();
     }
+
+    @GetMapping("/parkingLot/{parkingLotNumber}")
+    public ParkingLot getParkingLot(@PathVariable Long parkingLotNumber){
+        return parkingLotService.getParkingLot(parkingLotNumber);
+    }
+
 
     @DeleteMapping("/unparkingCar/{parkingLotNumber}")
     public CarParkingInfo unparkingCar(@PathVariable("parkingLotNumber") Long parkingLotNumber, @RequestBody UnparkCarRequest unparkCarRequest){
