@@ -1,4 +1,4 @@
-package com.spring.parking.bean;
+package com.spring.parking.entity;
 
 import jakarta.persistence.*;
 

@@ -1,7 +1,7 @@
 package com.spring.parking.service;
 
-import com.spring.parking.bean.CarParkingInfo;
-import com.spring.parking.bean.ParkingLot;
+import com.spring.parking.entity.CarParkingInfo;
+import com.spring.parking.entity.ParkingLot;
 import com.spring.parking.dao.ParkingLotDao;
 import com.spring.parking.model.UnparkCarRequest;
 import org.springframework.beans.factory.annotation.Autowired;

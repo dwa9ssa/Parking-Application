@@ -1,14 +1,13 @@
 package com.spring.parking.controller;
 
-import com.spring.parking.bean.CarParkingInfo;
-import com.spring.parking.bean.ParkingLot;
+import com.spring.parking.entity.CarParkingInfo;
+import com.spring.parking.entity.ParkingLot;
 import com.spring.parking.model.UnparkCarRequest;
 import com.spring.parking.service.CarParkingInfoService;
 import com.spring.parking.service.ParkingLotService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController

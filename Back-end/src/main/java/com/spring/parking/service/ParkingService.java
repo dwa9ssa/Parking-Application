@@ -1,6 +1,6 @@
 package com.spring.parking.service;
 
-import com.spring.parking.bean.Parking;
+import com.spring.parking.entity.Parking;
 import com.spring.parking.dao.ParkingDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
