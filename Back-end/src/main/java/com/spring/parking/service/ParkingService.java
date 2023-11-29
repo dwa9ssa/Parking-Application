@@ -11,8 +11,6 @@ import java.util.List;
 @Service
 public class ParkingService {
     private ParkingDao parkingDao;
-    private Parking parking;
-
     @Autowired
     public ParkingService(ParkingDao parkingDao) {
         this.parkingDao = parkingDao;

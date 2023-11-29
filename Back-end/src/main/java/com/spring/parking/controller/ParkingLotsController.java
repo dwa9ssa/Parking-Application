@@ -3,7 +3,6 @@ package com.spring.parking.controller;
 import com.spring.parking.entity.CarParkingInfo;
 import com.spring.parking.entity.ParkingLot;
 import com.spring.parking.model.UnparkCarRequest;
-import com.spring.parking.service.CarParkingInfoService;
 import com.spring.parking.service.ParkingLotService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -17,9 +16,6 @@ public class ParkingLotsController {
 
     @Autowired
     private ParkingLotService parkingLotService;
-
-    @Autowired
-    private CarParkingInfoService carParkingInfoService;
 
     @GetMapping("/parkingLots")
     public List<ParkingLot> getParkingLots(){
