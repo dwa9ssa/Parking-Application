@@ -8,31 +8,37 @@ import java.util.List;
 public class Parking {
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
-    private long parking_id;
+    private long id;
 
     private String openTime;
     private String closetime;
 
-    @OneToMany(mappedBy = "parking", cascade = CascadeType.ALL)
-    private List<ParkingLot> parkingLot;
+    public List<ParkingLot> getParkingLots() {
+        return parkingLots;
+    }
+
+    public void setParkingLots(List<ParkingLot> parkingLots) {
+        this.parkingLots = parkingLots;
+    }
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "parking")
+    private List<ParkingLot> parkingLots;
 
     public Parking() {
     }
 
-    public Parking(long parking_id, String openTime, String closetime, List<ParkingLot> parkingLot) {
-        this.parking_id = parking_id;
-
+    public Parking(long id, String openTime, String closetime) {
+        this.id = id;
         this.openTime = openTime;
         this.closetime = closetime;
-        this.parkingLot = parkingLot;
     }
 
-    public long getParking_id() {
-        return parking_id;
+    public long getId() {
+        return id;
     }
 
-    public void setParking_id(long parking_id) {
-        this.parking_id = parking_id;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getOpenTime() {
@@ -51,11 +57,4 @@ public class Parking {
         this.closetime = closetime;
     }
 
-    public List<ParkingLot> getParkingLot() {
-        return parkingLot;
-    }
-
-    public void setParkingLot(List<ParkingLot> parkingLot) {
-        this.parkingLot = parkingLot;
-    }
 }

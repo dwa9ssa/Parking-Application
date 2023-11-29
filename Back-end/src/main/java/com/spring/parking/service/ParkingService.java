@@ -2,6 +2,7 @@ package com.spring.parking.service;
 
 import com.spring.parking.entity.Parking;
 import com.spring.parking.dao.ParkingDao;
+import com.spring.parking.entity.ParkingLot;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +23,9 @@ public class ParkingService {
     }
 
     public Parking parkingInit(Parking parking){
+        for (ParkingLot parkingLot : parking.getParkingLots()) {
+            parkingLot.setParking(parking);
+        }
         return parkingDao.save(parking);
     }
 

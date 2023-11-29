@@ -1,5 +1,6 @@
 package com.spring.parking.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -10,11 +11,11 @@ public class ParkingLot {
     private long parkingLotNumber;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "vehicle_registration")
     private CarParkingInfo carParkingInfo;
 
     @ManyToOne
-    @JoinColumn(name = "parking_id")
+    @JoinColumn(name="parking_id", nullable=false)
+    @JsonIgnore
     private Parking parking;
 
     private double price;
@@ -52,15 +53,6 @@ public class ParkingLot {
 
     public void setParking(Parking parking) {
         this.parking = parking;
-    }
-
-    @Override
-    public String toString() {
-        return "ParkingLot{" +
-                "parkingLotNumber=" + parkingLotNumber +
-                ", carParkingInfo='" + carParkingInfo + '\'' +
-                ", parking=" + parking +
-                '}';
     }
 
     public double getPrice() {
