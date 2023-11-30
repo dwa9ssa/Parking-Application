@@ -1,8 +1,8 @@
 package com.spring.parking.controller;
 
-import com.spring.parking.bean.ParkingLot;
-import com.spring.parking.dao.ParkingDao;
-import com.spring.parking.dao.ParkingLotDao;
+import com.spring.parking.entity.CarParkingInfo;
+import com.spring.parking.entity.ParkingLot;
+import com.spring.parking.model.UnparkCarRequest;
 import com.spring.parking.service.ParkingLotService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -10,32 +10,32 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/parking/ParkingLot")
+@RequestMapping("/api/v1/parking")
 public class ParkingLotsController {
 
 
     @Autowired
     private ParkingLotService parkingLotService;
 
-    @GetMapping("/getParkingLots")
-    public List<ParkingLot> getParkingLot(){
-        return parkingLotService.getParkingLot();
+    @GetMapping("/parkingLots")
+    public List<ParkingLot> getParkingLots(){
+        return parkingLotService.getParkingLots();
     }
 
-    @DeleteMapping("/{parkingLotNumber}")
-    public void deleteCarParkingInfoById(@PathVariable("parkingLotNumber") Long parkingLotNumber){
-        parkingLotService.deleteCarParkingInfo(parkingLotNumber);
+    @GetMapping("/parkingLot/{parkingLotNumber}")
+    public ParkingLot getParkingLot(@PathVariable Long parkingLotNumber){
+        return parkingLotService.getParkingLot(parkingLotNumber);
     }
 
-    @PostMapping("/postParkingLot")
-    public void addNewCarParkingInfo(@RequestBody ParkingLot parkingLot){
-        parkingLotService.addNewCarParkingInfo(parkingLot);
+
+    @DeleteMapping("/unparkingCar/{parkingLotNumber}")
+    public CarParkingInfo unparkingCar(@PathVariable("parkingLotNumber") Long parkingLotNumber, @RequestBody UnparkCarRequest unparkCarRequest){
+        return parkingLotService.unparkingCar(parkingLotNumber,unparkCarRequest);
     }
 
-    @PutMapping("/{parkingLotNumber}")
-    public void updateCar(@PathVariable("parkingLotNumber") Long parkingLotNumber,@RequestBody ParkingLot parkingLot){
-        parkingLotService.updateCarParkingInfo(parkingLotNumber,parkingLot);
+    @PostMapping("/parkCar/{parkingLotNumber}")
+    public void parkingCar(@PathVariable("parkingLotNumber") Long parkingLotNumber, @RequestBody CarParkingInfo carParkingInfo){
+        parkingLotService.parkingCar(parkingLotNumber, carParkingInfo);
     }
-
 
 }

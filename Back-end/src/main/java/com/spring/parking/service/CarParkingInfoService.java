@@ -1,11 +1,11 @@
 package com.spring.parking.service;
 
-import com.spring.parking.bean.CarParkingInfo;
+import com.spring.parking.entity.CarParkingInfo;
 import com.spring.parking.dao.CarParkingInfoDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CarParkingInfoService {
@@ -17,26 +17,28 @@ public class CarParkingInfoService {
         this.carParkingInfoDao = carParkingInfoDao;
     }
 
-    public List<CarParkingInfo> getCars() {
-        return carParkingInfoDao.findAll();
+    public void updateCar(long vehicleRegistration, CarParkingInfo carParkingInfo){
+        Optional<CarParkingInfo> carParkingInfoOptional = carParkingInfoDao.findById(vehicleRegistration);
+        if(carParkingInfoOptional.isPresent()){
+            CarParkingInfo carParkingInfoGet = carParkingInfoOptional.get();
+            carParkingInfoGet.setBrand(carParkingInfo.getBrand());
+            carParkingInfoGet.setModel(carParkingInfo.getModel());
+            carParkingInfoGet.setColor(carParkingInfo.getColor());
+            carParkingInfoGet.setType(carParkingInfo.getType());
+            carParkingInfoGet.setEntryTime(carParkingInfo.getEntryTime());
+            carParkingInfoDao.save(carParkingInfoGet);
+        }
+        else {
+            System.out.println("vehicleRegistration of this car not found !");
+        }
+
     }
 
-    public void updateCar(String vehicleRegistration, CarParkingInfo carParkingInfo){
-        carParkingInfo.setBrand(carParkingInfo.getBrand());
-        carParkingInfo.setModel(carParkingInfo.getModel());
-        carParkingInfo.setColor(carParkingInfo.getColor());
-        carParkingInfo.setType(carParkingInfo.getType());
-        carParkingInfo.setEntryTimestamp(carParkingInfo.getEntryTimestamp());
-        carParkingInfo.setFinishTimestamp(carParkingInfo.getFinishTimestamp());
+    public void deleteCar(CarParkingInfo car){
+        carParkingInfoDao.delete(car);
+    }
+
+    public void save(CarParkingInfo carParkingInfo){
         carParkingInfoDao.save(carParkingInfo);
     }
-
-    public void addCar(CarParkingInfo carParkingInfo){
-        carParkingInfoDao.save(carParkingInfo);
-    }
-
-    public void deleteCar(String vehicleRegistration){
-        carParkingInfoDao.delete(carParkingInfoDao.findByVehicleRegistration(vehicleRegistration));
-    }
-
 }

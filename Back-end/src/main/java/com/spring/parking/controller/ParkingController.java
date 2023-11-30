@@ -1,13 +1,9 @@
 package com.spring.parking.controller;
 
-
-import com.spring.parking.bean.Parking;
-import com.spring.parking.dao.ParkingDao;
+import com.spring.parking.entity.Parking;
 import com.spring.parking.service.ParkingService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -15,19 +11,17 @@ import java.util.List;
 @RequestMapping("/api/v1/parking")
 public class ParkingController {
 
-    @Autowired
-    private ParkingDao parkingDao;
 
     @Autowired
     private ParkingService parkingService;
 
-    @GetMapping("/getParking")
+    @GetMapping
     public List<Parking> getParking(){
         return parkingService.getParking();
     }
 
-    @GetMapping("/getParkingLots")
-    public String getParkingLots(){
-        return parkingService.getParkingLots().toString();
+    @PostMapping("/init")
+    public Parking parkingInit(@RequestBody Parking parking){
+        return parkingService.parkingInit(parking);
     }
 }

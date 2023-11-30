@@ -1,6 +1,6 @@
 package com.spring.parking.dao;
 
-import com.spring.parking.bean.Parking;
+import com.spring.parking.entity.Parking;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
