@@ -1,5 +1,6 @@
 package com.spring.parking.controller;
 
+import com.spring.parking.dto.ParkingDto;
 import com.spring.parking.entity.Parking;
 import com.spring.parking.service.ParkingService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,7 @@ public class ParkingController {
     }
 
     @PostMapping("/init")
-    public Parking parkingInit(@RequestBody Parking parking){
+    public ParkingDto parkingInit(@RequestBody Parking parking){
         return parkingService.parkingInit(parking);
     }
 }

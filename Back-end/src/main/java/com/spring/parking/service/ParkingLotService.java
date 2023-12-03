@@ -1,5 +1,7 @@
 package com.spring.parking.service;
 
+import com.spring.parking.dto.CarParkingInfoDto;
+import com.spring.parking.dto.ParkingLotDto;
 import com.spring.parking.entity.CarParkingInfo;
 import com.spring.parking.entity.ParkingLot;
 import com.spring.parking.dao.ParkingLotDao;
@@ -27,11 +29,11 @@ public class ParkingLotService {
         return parkingLotDao.findAll();
     }
 
-    public ParkingLot getParkingLot(Long parkingLotNumber){
-        return parkingLotDao.findById(parkingLotNumber).get();
+    public ParkingLotDto getParkingLot(Long parkingLotNumber){
+        return ParkingLotDto.convertToParkingLotDto(parkingLotDao.findById(parkingLotNumber).get());
     }
 
-    public CarParkingInfo unparkingCar(Long parkingLotNumber, UnparkCarRequest unparkCarRequest){
+    public CarParkingInfoDto unparkingCar(Long parkingLotNumber, UnparkCarRequest unparkCarRequest){
         ParkingLot parkingLot = findParkingLotById(parkingLotNumber);
         CarParkingInfo car = parkingLot.getCarParkingInfo();
         LocalDateTime start = car.getEntryTime();
@@ -42,7 +44,7 @@ public class ParkingLotService {
         parkingLot.setCarParkingInfo(null);
         carParkingInfoService.deleteCar(car);
         parkingLotDao.save(parkingLot);
-        return car;
+        return CarParkingInfoDto.convertToCarParkingInfoDto(car);
     }
 
     public ParkingLot findParkingLotById(Long parkingLotId){

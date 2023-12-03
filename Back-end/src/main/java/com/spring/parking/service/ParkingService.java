@@ -1,5 +1,6 @@
 package com.spring.parking.service;
 
+import com.spring.parking.dto.ParkingDto;
 import com.spring.parking.entity.Parking;
 import com.spring.parking.dao.ParkingDao;
 import com.spring.parking.entity.ParkingLot;
@@ -20,11 +21,11 @@ public class ParkingService {
         return parkingDao.findAll();
     }
 
-    public Parking parkingInit(Parking parking){
+    public ParkingDto parkingInit(Parking parking){
         for (ParkingLot parkingLot : parking.getParkingLots()) {
             parkingLot.setParking(parking);
         }
-        return parkingDao.save(parking);
+        return ParkingDto.convertToParkingDto(parkingDao.save(parking));
     }
 
 }

@@ -1,5 +1,7 @@
 package com.spring.parking.controller;
 
+import com.spring.parking.dto.CarParkingInfoDto;
+import com.spring.parking.dto.ParkingLotDto;
 import com.spring.parking.entity.CarParkingInfo;
 import com.spring.parking.entity.ParkingLot;
 import com.spring.parking.model.UnparkCarRequest;
@@ -23,13 +25,13 @@ public class ParkingLotsController {
     }
 
     @GetMapping("/parkingLot/{parkingLotNumber}")
-    public ParkingLot getParkingLot(@PathVariable Long parkingLotNumber){
+    public ParkingLotDto getParkingLot(@PathVariable Long parkingLotNumber){
         return parkingLotService.getParkingLot(parkingLotNumber);
     }
 
 
     @DeleteMapping("/unparkingCar/{parkingLotNumber}")
-    public CarParkingInfo unparkingCar(@PathVariable("parkingLotNumber") Long parkingLotNumber, @RequestBody UnparkCarRequest unparkCarRequest){
+    public CarParkingInfoDto unparkingCar(@PathVariable("parkingLotNumber") Long parkingLotNumber, @RequestBody UnparkCarRequest unparkCarRequest){
         return parkingLotService.unparkingCar(parkingLotNumber,unparkCarRequest);
     }
 
