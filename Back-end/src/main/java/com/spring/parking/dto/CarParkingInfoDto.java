@@ -20,4 +20,17 @@ public class CarParkingInfoDto {
     private String type;
     private LocalDateTime entryTime;
     private double totalPrice;
+
+    public static CarParkingInfoDto convertToCarParkingInfoDto(CarParkingInfo carParkingInfoEntity){
+        return CarParkingInfoDto.builder()
+                .vehicleRegistration(carParkingInfoEntity.getVehicleRegistration())
+                .brand(carParkingInfoEntity.getBrand())
+                .model(carParkingInfoEntity.getModel())
+                .color(carParkingInfoEntity.getColor())
+                .type(carParkingInfoEntity.getType())
+                .entryTime(carParkingInfoEntity.getEntryTime())
+                .totalPrice(carParkingInfoEntity.getTotalPrice())
+                .build();
+    }
+
 }
