@@ -6,10 +6,12 @@ import com.spring.parking.dao.ParkingDao;
 import com.spring.parking.entity.ParkingLot;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
+@Transactional
 public class ParkingService {
     private ParkingDao parkingDao;
     @Autowired
