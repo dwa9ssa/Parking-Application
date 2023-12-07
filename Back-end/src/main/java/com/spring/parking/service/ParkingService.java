@@ -26,7 +26,7 @@ public class ParkingService {
         return parkingDao.findAll();
     }
 
-    public ParkingDto parkingInit(ParkingDto parkingDto){
+    public ParkingDto parkingInit(ParkingDto parkingDto) {
         Parking parkingEntity = parkingMapper.toParkingEntity(parkingDto);
 
         for (ParkingLot parkingLot : parkingEntity.getParkingLots()) {

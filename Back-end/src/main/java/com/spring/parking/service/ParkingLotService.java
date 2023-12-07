@@ -59,8 +59,9 @@ public class ParkingLotService {
         return parkingLotDao.findById(parkingLotId).get();
     }
 
-    public void parkingCar(Long parkingLotNumber,CarParkingInfo carParkingInfo){
+    public void parkingCar(Long parkingLotNumber,CarParkingInfoDto carParkingInfoDto){
         ParkingLot parkingLot = findParkingLotById(parkingLotNumber);
+        CarParkingInfo carParkingInfo = carParkingInfoMapper.toCarParkingInfoEntity(carParkingInfoDto);
         parkingLot.setCarParkingInfo(carParkingInfo);
         parkingLotDao.save(parkingLot);
     }

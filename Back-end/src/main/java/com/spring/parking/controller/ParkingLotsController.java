@@ -36,8 +36,8 @@ public class ParkingLotsController {
     }
 
     @PostMapping("/parkCar/{parkingLotNumber}")
-    public void parkingCar(@PathVariable("parkingLotNumber") Long parkingLotNumber, @RequestBody CarParkingInfo carParkingInfo){
-        parkingLotService.parkingCar(parkingLotNumber, carParkingInfo);
+    public void parkingCar(@PathVariable("parkingLotNumber") Long parkingLotNumber, @RequestBody CarParkingInfoDto carParkingInfoDto){
+        parkingLotService.parkingCar(parkingLotNumber, carParkingInfoDto);
     }
 
 }
