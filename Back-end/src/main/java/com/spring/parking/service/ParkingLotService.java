@@ -5,6 +5,8 @@ import com.spring.parking.dto.ParkingLotDto;
 import com.spring.parking.entity.CarParkingInfo;
 import com.spring.parking.entity.ParkingLot;
 import com.spring.parking.dao.ParkingLotDao;
+import com.spring.parking.mapper.CarParkingInfoMapper;
+import com.spring.parking.mapper.ParkingLotMapper;
 import com.spring.parking.model.UnparkCarRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,14 +19,18 @@ import java.util.List;
 @Transactional
 public class ParkingLotService {
 
+    private final ParkingLotMapper parkingLotMapper;
+    private final CarParkingInfoMapper carParkingInfoMapper;
     private ParkingLotDao parkingLotDao;
 
     private CarParkingInfoService carParkingInfoService;
 
     @Autowired
-    public ParkingLotService(ParkingLotDao parkingLotDao, CarParkingInfoService carParkingInfoService) {
+    public ParkingLotService(ParkingLotDao parkingLotDao, CarParkingInfoService carParkingInfoService, ParkingLotMapper parkingLotMapper, CarParkingInfoMapper carParkingInfoMapper) {
         this.parkingLotDao = parkingLotDao;
         this.carParkingInfoService = carParkingInfoService;
+        this.parkingLotMapper = parkingLotMapper;
+        this.carParkingInfoMapper = carParkingInfoMapper;
     }
 
     public List<ParkingLot> getParkingLots() {
@@ -32,7 +38,7 @@ public class ParkingLotService {
     }
 
     public ParkingLotDto getParkingLot(Long parkingLotNumber){
-        return ParkingLotDto.convertToParkingLotDto(parkingLotDao.findById(parkingLotNumber).get());
+        return parkingLotMapper.toParkingLotDto(parkingLotDao.findById(parkingLotNumber).get());
     }
 
     public CarParkingInfoDto unparkingCar(Long parkingLotNumber, UnparkCarRequest unparkCarRequest){
@@ -46,7 +52,7 @@ public class ParkingLotService {
         parkingLot.setCarParkingInfo(null);
         carParkingInfoService.deleteCar(car);
         parkingLotDao.save(parkingLot);
-        return CarParkingInfoDto.convertToCarParkingInfoDto(car);
+        return carParkingInfoMapper.toCarParkingInfoDto(car);
     }
 
     public ParkingLot findParkingLotById(Long parkingLotId){

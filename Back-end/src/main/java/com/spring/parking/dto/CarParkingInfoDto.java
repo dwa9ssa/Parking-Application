@@ -1,10 +1,7 @@
 package com.spring.parking.dto;
 
-import com.spring.parking.entity.CarParkingInfo;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+
 
 import java.time.LocalDateTime;
 
@@ -21,16 +18,16 @@ public class CarParkingInfoDto {
     private LocalDateTime entryTime;
     private double totalPrice;
 
-    public static CarParkingInfoDto convertToCarParkingInfoDto(CarParkingInfo carParkingInfoEntity){
-        return CarParkingInfoDto.builder()
-                .vehicleRegistration(carParkingInfoEntity.getVehicleRegistration())
-                .brand(carParkingInfoEntity.getBrand())
-                .model(carParkingInfoEntity.getModel())
-                .color(carParkingInfoEntity.getColor())
-                .type(carParkingInfoEntity.getType())
-                .entryTime(carParkingInfoEntity.getEntryTime())
-                .totalPrice(carParkingInfoEntity.getTotalPrice())
-                .build();
-    }
+//    public static CarParkingInfoDto convertToCarParkingInfoDto(CarParkingInfo carParkingInfoEntity){
+//        return CarParkingInfoDto.builder()
+//                .vehicleRegistration(carParkingInfoEntity.getVehicleRegistration())
+//                .brand(carParkingInfoEntity.getBrand())
+//                .model(carParkingInfoEntity.getModel())
+//                .color(carParkingInfoEntity.getColor())
+//                .type(carParkingInfoEntity.getType())
+//                .entryTime(carParkingInfoEntity.getEntryTime())
+//                .totalPrice(carParkingInfoEntity.getTotalPrice())
+//                .build();
+//    }
 
 }

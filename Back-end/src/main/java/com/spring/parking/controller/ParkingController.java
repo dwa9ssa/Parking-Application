@@ -22,7 +22,7 @@ public class ParkingController {
     }
 
     @PostMapping("/init")
-    public ParkingDto parkingInit(@RequestBody Parking parking){
-        return parkingService.parkingInit(parking);
+    public ParkingDto parkingInit(@RequestBody ParkingDto parkingDto){
+        return parkingService.parkingInit(parkingDto);
     }
 }
