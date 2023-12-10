@@ -11,7 +11,7 @@ public class Parking {
     private long id;
 
     private String openTime;
-    private String closetime;
+    private String closeTime;
 
     public List<ParkingLot> getParkingLots() {
         return parkingLots;
@@ -27,10 +27,10 @@ public class Parking {
     public Parking() {
     }
 
-    public Parking(long id, String openTime, String closetime) {
+    public Parking(long id, String openTime, String closeTime) {
         this.id = id;
         this.openTime = openTime;
-        this.closetime = closetime;
+        this.closeTime = closeTime;
     }
 
     public long getId() {
@@ -49,12 +49,12 @@ public class Parking {
         this.openTime = openTime;
     }
 
-    public String getClosetime() {
-        return closetime;
+    public String getCloseTime() {
+        return closeTime;
     }
 
-    public void setClosetime(String closetime) {
-        this.closetime = closetime;
+    public void setCloseTime(String closeTime) {
+        this.closeTime = closeTime;
     }
 
 }
