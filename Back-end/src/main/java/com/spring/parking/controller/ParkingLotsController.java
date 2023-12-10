@@ -2,7 +2,6 @@ package com.spring.parking.controller;
 
 import com.spring.parking.dto.CarParkingInfoDto;
 import com.spring.parking.dto.ParkingLotDto;
-import com.spring.parking.entity.CarParkingInfo;
 import com.spring.parking.entity.ParkingLot;
 import com.spring.parking.model.UnparkCarRequest;
 import com.spring.parking.service.ParkingLotService;

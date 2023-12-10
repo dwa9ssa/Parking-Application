@@ -1,7 +1,6 @@
 package com.spring.parking.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.spring.parking.entity.CarParkingInfo;
 import com.spring.parking.entity.Parking;
 import lombok.*;
 
@@ -14,6 +13,7 @@ public class ParkingLotDto {
     private long parkingLotNumber;
     @JsonProperty("carParkingInfo")
     private CarParkingInfoDto carParkingInfoDto;
+    @JsonProperty("parking")
     private Parking parking;
     private double price;
 
