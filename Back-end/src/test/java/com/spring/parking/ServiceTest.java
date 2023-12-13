@@ -4,7 +4,6 @@ import com.spring.parking.dao.CarParkingInfoDao;
 import com.spring.parking.dto.CarParkingInfoDto;
 import com.spring.parking.entity.CarParkingInfo;
 import com.spring.parking.mapper.CarParkingInfoMapper;
-import com.spring.parking.mapper.ParkingLotMapper;
 import com.spring.parking.service.ParkingLotService;
 import org.junit.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -12,6 +11,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+import static org.junit.jupiter.api.Assertions.*;
 
 import static org.mockito.Mockito.when;
 
@@ -48,7 +48,10 @@ public class ServiceTest {
         when(carParkingInfoMapper.toCarParkingInfoEntity(carParkingInfoDto)).thenReturn(carParkingInfo);
         when(carParkingInfoDao.getReferenceById(carParkingInfo.getVehicleRegistration())).thenReturn(carParkingInfo);
         parkingLotService.parkingCar(1L, carParkingInfoDto);
+
+        assertNotNull(carParkingInfo.getVehicleRegistration());
     }
+
 
 
 }
