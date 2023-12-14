@@ -1,6 +1,7 @@
 package com.spring.parking;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.spring.parking.controller.CarParkingInfoController;
 import com.spring.parking.dao.CarParkingInfoDao;
 import com.spring.parking.entity.CarParkingInfo;
@@ -34,7 +35,10 @@ public class ControllerTest {
     public void shouldCreateNewCar() throws Exception {
         CarParkingInfo carParkingInfo = new CarParkingInfo(1L,"audi","Class A","Black","AMG", LocalDateTime.now(),10.0);
 
+
+        objectMapper.registerModule(new JavaTimeModule());
         String requestJson = objectMapper.writeValueAsString(carParkingInfo);
+
 
         mockMvc.perform(post("/api/v1/parking/parkCar")
                         .contentType(MediaType.APPLICATION_JSON)
