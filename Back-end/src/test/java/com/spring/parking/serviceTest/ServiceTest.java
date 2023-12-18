@@ -1,4 +1,4 @@
-package com.spring.parking;
+package com.spring.parking.serviceTest;
 
 import com.spring.parking.dao.CarParkingInfoDao;
 import com.spring.parking.dto.CarParkingInfoDto;

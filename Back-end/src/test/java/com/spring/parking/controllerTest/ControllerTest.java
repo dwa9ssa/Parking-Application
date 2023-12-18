@@ -1,16 +1,21 @@
-package com.spring.parking;
+package com.spring.parking.controllerTest;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.spring.parking.controller.CarParkingInfoController;
 import com.spring.parking.dao.CarParkingInfoDao;
-import com.spring.parking.entity.CarParkingInfo;
+import com.spring.parking.dto.CarParkingInfoDto;
+import com.spring.parking.service.CarParkingInfoService;
 import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.time.LocalDateTime;
 
@@ -20,24 +25,44 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 
 
-@WebMvcTest(CarParkingInfoController.class)
+@WebMvcTest(controllers = CarParkingInfoController.class)
+@ExtendWith(MockitoExtension.class)
 public class ControllerTest {
 
     @MockBean
     CarParkingInfoDao carParkingInfoDao;
+
+    @MockBean
+    private CarParkingInfoService carParkingInfoService;
+
     @Autowired
+    private final ObjectMapper objectMapper = new ObjectMapper();
     private MockMvc mockMvc;
+    private CarParkingInfoDto carParkingInfoDto;
 
-    private ObjectMapper objectMapper = new ObjectMapper();
 
+
+    @BeforeEach
+    public void setup() {
+        mockMvc = MockMvcBuilders.standaloneSetup(new CarParkingInfoController()).build();
+        carParkingInfoDto = CarParkingInfoDto.builder()
+                .vehicleRegistration(1)
+                .brand("Mercedes")
+                .model("AMG")
+                .color("Black")
+                .type("Class A")
+                .entryTime(LocalDateTime.now())
+                .totalPrice(10.0)
+    .build();
+
+    }
 
     @Test
     public void shouldCreateNewCar() throws Exception {
-        CarParkingInfo carParkingInfo = new CarParkingInfo(1L,"audi","Class A","Black","AMG", LocalDateTime.now(),10.0);
 
 
         objectMapper.registerModule(new JavaTimeModule());
-        String requestJson = objectMapper.writeValueAsString(carParkingInfo);
+        String requestJson = objectMapper.writeValueAsString(carParkingInfoDto);
 
 
         mockMvc.perform(post("/api/v1/parking/parkCar")
