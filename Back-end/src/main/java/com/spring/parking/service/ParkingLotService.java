@@ -21,9 +21,9 @@ public class ParkingLotService {
 
     private final ParkingLotMapper parkingLotMapper;
     private final CarParkingInfoMapper carParkingInfoMapper;
-    private ParkingLotDao parkingLotDao;
+    private final ParkingLotDao parkingLotDao;
 
-    private CarParkingInfoService carParkingInfoService;
+    private final CarParkingInfoService carParkingInfoService;
 
     @Autowired
     public ParkingLotService(ParkingLotDao parkingLotDao, CarParkingInfoService carParkingInfoService, ParkingLotMapper parkingLotMapper, CarParkingInfoMapper carParkingInfoMapper) {
